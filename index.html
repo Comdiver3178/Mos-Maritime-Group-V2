@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOS Maritime Group Limited</title>
-  <meta name="description" content="Practical offshore career positioning and commercial diving progression support for people targeting offshore and saturation pathways worldwide." />
+  <meta
+    name="description"
+    content="Practical offshore career positioning and commercial diving progression support for people targeting offshore and saturation pathways worldwide."
+  />
   <style>
     :root {
       --navy: #0e2a47;
@@ -159,9 +162,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 36px;
-      align-items: center;
+      align-items: start;
     }
 
     .eyebrow {
@@ -187,7 +190,7 @@
       color: var(--navy);
     }
 
-    .hero p {
+    .hero-copy p {
       margin: 0 0 22px;
       font-size: 18px;
       color: #35485c;
@@ -243,8 +246,8 @@
     }
 
     .hero-image-card,
-    .image-card,
-    .book-cover {
+    .hero-info-card,
+    .image-card {
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 24px;
@@ -256,6 +259,42 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
+    }
+
+    .hero-info-card {
+      margin-top: 22px;
+    }
+
+    .hero-info-top {
+      background: var(--navy);
+      color: var(--white);
+      padding: 24px;
+    }
+
+    .hero-info-top h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: var(--white);
+    }
+
+    .hero-info-top p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+      font-size: 15px;
+    }
+
+    .hero-info-body {
+      padding: 22px 24px 24px;
+    }
+
+    .hero-info-body ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #2f455b;
+    }
+
+    .hero-info-body li + li {
+      margin-top: 8px;
     }
 
     section {
@@ -399,20 +438,22 @@
 
     .book-grid {
       display: grid;
-      grid-template-columns: 0.88fr 1.12fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 28px;
-      align-items: center;
+      align-items: start;
     }
 
     .book-cover {
       min-height: 0;
+      border-radius: 24px;
       background: linear-gradient(180deg, #173b5f 0%, #0e2a47 100%);
       color: var(--white);
-      padding: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
+      gap: 18px;
       justify-content: flex-start;
-      gap: 20px;
     }
 
     .book-cover img {
@@ -432,7 +473,7 @@
     }
 
     .book-cover h3 {
-      margin: 12px 0;
+      margin: 10px 0;
       font-size: clamp(28px, 3vw, 40px);
       line-height: 1.05;
       color: var(--white);
@@ -596,7 +637,7 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <div class="eyebrow">Offshore Pathway Clarity</div>
           <h1>Practical offshore career positioning for commercial divers worldwide.</h1>
           <p>
@@ -613,6 +654,21 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="mailto:matt@mosmaritimegroup.co.nz?subject=MOS%20Maritime%20Group%20Enquiry">Email Now</a>
             <a class="btn btn-secondary" href="#services">View Services</a>
+          </div>
+
+          <div class="hero-info-card">
+            <div class="hero-info-top">
+              <h2>Who this is for</h2>
+              <p>Built for people who want real direction, not guesswork.</p>
+            </div>
+            <div class="hero-info-body">
+              <ul>
+                <li>People considering commercial diver training and wanting a realistic view before committing serious money.</li>
+                <li>Qualified commercial divers trying to position properly for offshore work.</li>
+                <li>Divers targeting long-term offshore progression and saturation pathways.</li>
+                <li>People who want a direct assessment of where they stand and what needs fixing.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -669,17 +725,14 @@
             <div class="service-tag">Pathway Review</div>
             <p>A direct assessment of your current position, your target direction, and the gap between the two.</p>
           </div>
-
           <div class="service-row">
             <div class="service-tag">Offshore Positioning</div>
             <p>Guidance on how to present yourself more credibly for offshore consideration, based on reality rather than guesswork.</p>
           </div>
-
           <div class="service-row">
             <div class="service-tag">Saturation Progression</div>
             <p>Clear advice on what saturation progression actually looks like, what matters, and where people commonly go wrong.</p>
           </div>
-
           <div class="service-row">
             <div class="service-tag">Commercial Clarity</div>
             <p>Honest direction before you sink more time or money into a pathway that may not suit your goals or current position.</p>
@@ -792,13 +845,11 @@
 
       function handleScroll() {
         const currentY = window.scrollY;
-
         if (currentY > lastScrollY && currentY > 60) {
           mainHeader.classList.add('hidden');
         } else {
           mainHeader.classList.remove('hidden');
         }
-
         lastScrollY = currentY;
       }
 
