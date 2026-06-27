@@ -391,6 +391,13 @@
       align-items: start;
     }
 
+    .authority-left,
+    .authority-right {
+      display: grid;
+      gap: 22px;
+      align-content: start;
+    }
+
     .authority-panel {
       background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
       color: var(--white);
@@ -419,14 +426,28 @@
       margin-top: 10px;
     }
 
-    .authority-side {
-      display: grid;
-      gap: 22px;
+    .image-card {
+      background: #0b1623;
     }
 
     .image-card img {
       width: 100%;
+      object-fit: cover;
+    }
+
+    .image-standard img {
       aspect-ratio: 16 / 10;
+    }
+
+    .image-kirby img {
+      width: 100%;
+      aspect-ratio: auto;
+      object-fit: contain;
+      background: #0b1623;
+    }
+
+    .image-chamber img {
+      aspect-ratio: 4 / 5;
       object-fit: cover;
     }
 
@@ -577,7 +598,8 @@
         gap: 10px;
       }
 
-      .hero-image-card img {
+      .hero-image-card img,
+      .image-chamber img {
         aspect-ratio: 16 / 10;
       }
     }
@@ -743,24 +765,31 @@
 
     <section id="why">
       <div class="container authority-wrap">
-        <div class="authority-panel">
-          <h3>Why MOS Maritime Group</h3>
-          <p>
-            The right visitor should understand immediately that the guidance is grounded in real offshore experience.
-          </p>
-          <ul>
-            <li>Real offshore and commercial diving background</li>
-            <li>Direct, no-fluff communication</li>
-            <li>Practical understanding of offshore progression</li>
-            <li>Built for serious people, not casual browsers</li>
-          </ul>
+        <div class="authority-left">
+          <div class="authority-panel">
+            <h3>Why MOS Maritime Group</h3>
+            <p>
+              The right visitor should understand immediately that the guidance is grounded in real offshore experience.
+            </p>
+            <ul>
+              <li>Real offshore and commercial diving background</li>
+              <li>Direct, no-fluff communication</li>
+              <li>Practical understanding of offshore progression</li>
+              <li>Built for serious people, not casual browsers</li>
+            </ul>
+          </div>
+
+          <div class="image-card image-chamber">
+            <img src="sat-chamber-corridor.jpeg" alt="Saturation chamber corridor" />
+          </div>
         </div>
 
-        <div class="authority-side">
-          <div class="image-card">
+        <div class="authority-right">
+          <div class="image-card image-kirby">
             <img src="kirby-helmet-close.jpg" alt="Kirby helmet close up" />
           </div>
-          <div class="image-card">
+
+          <div class="image-card image-standard">
             <img src="underwater-valve-work.jpg" alt="Underwater valve work" />
           </div>
         </div>
@@ -770,7 +799,7 @@
     <section class="book-strip" id="book">
       <div class="container book-grid">
         <div class="book-cover">
-          <img src="Book cover.1.png" alt="The Offshore Entry Blueprint book cover" />
+          <img src="Book%20cover.1.png" alt="The Offshore Entry Blueprint book cover" />
           <div>
             <small>Book</small>
             <h3>The Offshore Entry Blueprint</h3>
