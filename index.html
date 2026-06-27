@@ -77,7 +77,7 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 50;
       background: rgba(5, 7, 10, 0.98);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(10px);
@@ -143,6 +143,34 @@
       padding: 10px 15px;
       border-radius: 10px;
       white-space: nowrap;
+    }
+    .menu-toggle {
+      display: none;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .menu-icon {
+      width: 17px;
+      height: 12px;
+      display: grid;
+      gap: 3px;
+    }
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--gold-light);
     }
     .hero {
       padding: 28px 0;
@@ -403,7 +431,6 @@
     .advisory-note strong {
       color: var(--gold-light);
     }
-    /* FIXED IMAGE GRID: BOTTOM EDGES MATCH */
     .authority-wrap {
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
@@ -558,6 +585,47 @@
       gap: 12px;
     }
     @media (max-width: 980px) {
+      body {
+        padding: 14px;
+      }
+      .topbar {
+        font-size: 11px;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .desktop-nav {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(5, 7, 10, 0.99);
+        box-shadow: 0 16px 25px rgba(0, 0, 0, 0.35);
+      }
+      .desktop-nav.open {
+        display: block;
+      }
+      .desktop-nav ul {
+        display: grid;
+        gap: 8px;
+      }
+      .desktop-nav ul li {
+        width: 100%;
+      }
+      .desktop-nav ul a {
+        display: block;
+        padding: 13px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+      }
+      .desktop-nav ul .nav-cta {
+        text-align: center;
+        border-color: transparent;
+      }
       .hero-grid,
       .proof-grid,
       .problem-grid,
@@ -565,9 +633,6 @@
       .book-grid,
       .cta-box {
         grid-template-columns: 1fr;
-      }
-      nav ul {
-        display: none;
       }
       .hero-image-card img {
         aspect-ratio: 16 / 9;
@@ -602,6 +667,15 @@
       .topbar-inner {
         padding: 8px 0;
       }
+      .topbar-links {
+        gap: 10px;
+      }
+      .brand-copy span {
+        font-size: 13px;
+      }
+      .brand-copy small {
+        font-size: 8px;
+      }
       h1 {
         font-size: 34px;
       }
@@ -612,12 +686,6 @@
       .service-row {
         grid-template-columns: 1fr;
         gap: 6px;
-      }
-      .brand-copy span {
-        font-size: 14px;
-      }
-      .brand-copy small {
-        font-size: 9px;
       }
     }
   </style>
@@ -633,7 +701,7 @@
     </div>
   </div>
 </div>
-<header>
+<header id="mainHeader">
   <div class="container nav">
     <a class="brand" href="#top">
       <div class="brand-mark">MOS</div>
@@ -642,7 +710,15 @@
         <span>MOS Maritime Group Limited</span>
       </div>
     </a>
-    <nav>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu">
+      <span class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      Menu
+    </button>
+    <nav class="desktop-nav" id="siteMenu">
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#why">Why MOS</a></li>
@@ -846,7 +922,12 @@
           <div>Practical insight built on real offshore experience</div>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.amazon.com/Offshore-Entry-Blueprint-Actually-Commercial-ebook/dp/B0GSJCZPX8" target="_blank" rel="noopener noreferrer">
+          <a
+            class="btn btn-primary"
+            href="https://www.amazon.com/Offshore-Entry-Blueprint-Actually-Commercial-ebook/dp/B0GSJCZPX8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Buy the Book
           </a>
           <a
@@ -907,5 +988,34 @@
   </div>
 </footer>
   </div>
+  <script>
+    (function () {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("siteMenu");
+      const menuLinks = menu.querySelectorAll("a");
+      toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      });
+      menuLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+      document.addEventListener("click", function (event) {
+        if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 980) {
+          menu.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
