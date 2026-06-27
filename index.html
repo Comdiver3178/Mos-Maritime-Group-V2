@@ -23,7 +23,9 @@
       --shadow: 0 16px 40px rgba(14, 42, 71, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -226,7 +228,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      align-items: center;
+      align-items: centre;
     }
 
     .btn {
@@ -262,8 +264,9 @@
     }
 
     .hero-image-card img {
-      aspect-ratio: 4 / 5;
+      height: 790px;
       object-fit: cover;
+      object-position: centre;
     }
 
     .hero-info-card {
@@ -435,6 +438,10 @@
       overflow: hidden;
     }
 
+    .image-card img {
+      background: var(--white);
+    }
+
     .image-kirby img {
       height: 520px;
       object-fit: cover;
@@ -448,7 +455,7 @@
     }
 
     .image-chamber img {
-      height: 520px;
+      height: 620px;
       object-fit: cover;
       object-position: center;
     }
@@ -668,10 +675,8 @@
   </header>
 
   <main id="top">
-
     <section class="hero">
       <div class="container hero-grid">
-
         <div class="hero-copy">
           <div class="eyebrow">Offshore Pathway Clarity</div>
 
@@ -716,15 +721,16 @@
         </div>
 
         <div class="hero-image-card">
-          <img src="offshore-platform.jpg" alt="Offshore platform at sea" />
+          <img
+            src="offshore-platform.jpg"
+            alt="Offshore platform at sea"
+          />
         </div>
-
       </div>
     </section>
 
     <section class="problem">
       <div class="container">
-
         <div class="section-head">
           <h2>Most people waste time, money, and years because nobody explains the gap properly.</h2>
 
@@ -756,13 +762,11 @@
             </ul>
           </div>
         </div>
-
       </div>
     </section>
 
     <section id="services">
       <div class="container">
-
         <div class="section-head">
           <h2>Services focused on real industry progression.</h2>
 
@@ -792,13 +796,11 @@
             <p>Honest direction before you sink more time or money into a pathway that may not suit your goals or current position.</p>
           </div>
         </div>
-
       </div>
     </section>
 
     <section id="why">
       <div class="container authority-wrap">
-
         <div class="authority-left">
           <div class="authority-panel">
             <h3>Why MOS Maritime Group</h3>
@@ -816,36 +818,43 @@
           </div>
 
           <div class="image-card image-chamber">
-            <img src="sat-chamber-corridor.jpg" alt="Saturation chamber corridor" />
+            <img
+              src="sat-chamber-interior.jpg"
+              alt="Interior corridor of a saturation diving chamber"
+            />
           </div>
         </div>
 
         <div class="authority-right">
           <div class="image-card image-kirby">
-            <img src="kirby-helmet-close.jpg" alt="Kirby helmet close up" />
+            <img
+              src="kirby-helmet-close.jpg"
+              alt="Kirby Morgan commercial diving helmet close-up"
+            />
           </div>
 
           <div class="image-card image-underwater">
-            <img src="underwater-valve-work.jpg" alt="Underwater valve work" />
+            <img
+              src="underwater-valve-work.jpg"
+              alt="Commercial diver carrying out underwater valve work"
+            />
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="book-strip" id="book">
       <div class="container book-grid">
-
         <div class="book-cover">
-          <img src="Book%20cover.1.png" alt="The Offshore Entry Blueprint book cover" />
+          <img
+            src="Book%20cover.1.png"
+            alt="The Offshore Entry Blueprint book cover"
+          />
 
           <div>
             <small>Book</small>
             <h3>The Offshore Entry Blueprint</h3>
-
-            <p>
-              What it actually takes to get hired in commercial diving and offshore oil &amp; gas.
-            </p>
+            <p>What it actually takes to get hired in commercial diving and offshore oil &amp; gas.</p>
           </div>
 
           <p>
@@ -883,13 +892,11 @@
             </a>
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="cta-section" id="contact">
       <div class="container cta-box">
-
         <div>
           <div class="section-head" style="margin-bottom: 18px;">
             <h2>Make contact directly.</h2>
@@ -929,10 +936,8 @@
             <div>Hawke’s Bay, New Zealand</div>
           </div>
         </div>
-
       </div>
     </section>
-
   </main>
 
   <footer>
