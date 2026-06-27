@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOS Maritime Group Limited</title>
+  <meta name="description" content="Practical offshore career positioning and commercial diving progression support." />
+  <style>
+    :root {
+      --black: #05070a;
+      --navy: #07131d;
+      --navy-2: #0b1d2a;
+      --panel: #0d1923;
+      --panel-2: #10212d;
+      --line: #29404e;
+      --text: #f5f6f7;
+      --muted: #c2ccd3;
+      --gold: #d4ae46;
+      --gold-light: #f1d27b;
+      --max: 1240px;
+      --radius: 16px;
+      --shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .topbar {
+      background: #020304;
+      border-bottom: 1px solid rgba(212, 174, 70, 0.26);
+      color: var(--gold-light);
+      font-size: 13px;
+    }
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .topbar-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(5, 7, 10, 0.98);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+    header.hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+    .brand-copy small {
+      display: block;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .brand-copy span {
+      display: block;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    nav ul a:hover {
+      color: var(--gold-light);
+    }
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 11px;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .hero {
+      padding: 54px 0 48px;
+      background:
+        radial-gradient(circle at 82% 14%, rgba(212, 174, 70, 0.12), transparent 28%),
+        linear-gradient(180deg, #07131d 0%, #05070a 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+      gap: 34px;
+      align-items: centre;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 11px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(212, 174, 70, 0.42);
+      border-radius: 999px;
+      background: rgba(212, 174, 70, 0.1);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    h1,
+    h2,
+    h3 {
+      color: var(--text);
+    }
+    h1 {
+      max-width: 720px;
+      margin: 0 0 17px;
+      font-size: clamp(40px, 4.3vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+    .hero-copy > p {
+      max-width: 710px;
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+      margin: 0 0 22px;
+      padding: 0;
+      list-style: none;
+    }
+    .hero-points li {
+      min-height: 70px;
+      display: flex;
+      align-items: centre;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: 13px;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: centre;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: centre;
+      justify-content: centre;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      font-weight: 800;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-secondary {
+      border-color: var(--line);
+      background: var(--panel);
+      color: var(--gold-light);
+    }
+    .hero-image-card,
+    .hero-info-card,
+    .image-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .hero-image-card img {
+      aspect-ratio: 4 / 4.55;
+      object-fit: cover;
+    }
+    .hero-info-card {
+      margin-top: 18px;
+    }
+    .hero-info-top {
+      padding: 20px 22px;
+      background: linear-gradient(135deg, var(--navy-2), #071018);
+      border-bottom: 1px solid rgba(212, 174, 70, 0.32);
+    }
+    .hero-info-top h2 {
+      margin: 0 0 7px;
+      color: var(--gold-light);
+      font-size: 20px;
+    }
+    .hero-info-top p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .hero-info-body {
+      padding: 18px 22px 20px;
+      color: var(--text);
+    }
+    .hero-info-body ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .hero-info-body li + li {
+      margin-top: 7px;
+    }
+    section {
+      padding: 60px 0;
+      background: var(--black);
+    }
+    .section-head {
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 3.5vw, 43px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .problem,
+    .book-strip {
+      background: #080e14;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .problem-box {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .problem-box h3 {
+      margin: 0 0 10px;
+      color: var(--gold-light);
+      font-size: 21px;
+    }
+    .problem-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .problem-box li + li {
+      margin-top: 8px;
+    }
+    .services-list {
+      display: grid;
+      gap: 12px;
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 17px 19px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .service-tag {
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .service-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .authority-wrap {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .authority-left,
+    .authority-right {
+      display: grid;
+      gap: 20px;
+      align-content: start;
+    }
+    .authority-panel {
+      padding: 27px;
+      border: 1px solid rgba(212, 174, 70, 0.34);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(212, 174, 70, 0.1), transparent 50%),
+        linear-gradient(180deg, var(--navy-2), var(--navy));
+      box-shadow: var(--shadow);
+    }
+    .authority-panel h3 {
+      margin: 0 0 10px;
+      color: var(--gold-light);
+      font-size: 25px;
+    }
+    .authority-panel p,
+    .authority-panel li {
+      color: var(--text);
+    }
+    .authority-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .authority-panel ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+    }
+    .authority-panel li + li {
+      margin-top: 8px;
+    }
+    .image-kirby img {
+      height: 470px;
+      object-fit: cover;
+      object-position: centre;
+    }
+    .image-underwater img {
+      height: 315px;
+      object-fit: cover;
+      object-position: centre;
+    }
+    .image-chamber img {
+      height: 470px;
+      object-fit: cover;
+      object-position: centre;
+    }
+    .book-grid {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .book-cover {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid rgba(212, 174, 70, 0.32);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(212, 174, 70, 0.1), transparent 50%),
+        linear-gradient(180deg, var(--navy-2), var(--black));
+      box-shadow: var(--shadow);
+    }
+    .book-cover img {
+      max-width: 220px;
+      border: 1px solid rgba(212, 174, 70, 0.45);
+      border-radius: 13px;
+    }
+    .book-cover small {
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .book-cover h3 {
+      margin: 8px 0;
+      font-size: clamp(27px, 2.7vw, 38px);
+      line-height: 1.08;
+    }
+    .book-cover p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .book-points {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 22px;
+    }
+    .book-points div {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: 13px;
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+    .cta-section {
+      background:
+        radial-gradient(circle at 82% 14%, rgba(212, 174, 70, 0.15), transparent 32%),
+        linear-gradient(180deg, var(--navy-2), var(--black));
+    }
+    .cta-box {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: centre;
+    }
+    .cta-section h2 {
+      color: var(--gold-light);
+    }
+    .contact-card {
+      padding: 24px;
+      border: 1px solid rgba(212, 174, 70, 0.36);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+    .contact-card h3 {
+      margin: 0 0 13px;
+      color: var(--gold-light);
+      font-size: 21px;
+    }
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .contact-list a {
+      color: var(--gold-light);
+    }
+    footer {
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+      background: #020304;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: centre;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    @media (max-width: 980px) {
+      .hero-grid,
+      .problem-grid,
+      .authority-wrap,
+      .book-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        display: none;
+      }
+      .hero-image-card img {
+        aspect-ratio: 16 / 10;
+      }
+      .image-underwater img,
+      .image-chamber img,
+      .image-kirby img {
+        height: auto;
+        aspect-ratio: auto;
+      }
+    }
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+      .topbar-inner {
+        padding: 9px 0;
+      }
+      .hero {
+        padding: 40px 0;
+      }
+      h1 {
+        font-size: 40px;
+      }
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+      .brand-copy span {
+        font-size: 15px;
+      }
+      .brand-copy small {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Worldwide offshore career positioning and progression support</div>
+      <div class="topbar-links">
+        <a href="mailto:matt@mosmaritimegroup.co.nz">matt@mosmaritimegroup.co.nz</a>
+        <a href="tel:+6421712442">+64 21 712 442</a>
+      </div>
+    </div>
+  </div>
+  <header id="mainHeader">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="brand-mark">MOS</div>
+        <div class="brand-copy">
+          <small>Worldwide Advisory</small>
+          <span>MOS Maritime Group Limited</span>
+        </div>
+      </a>
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why MOS</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="nav-cta" href="mailto:matt@mosmaritimegroup.co.nz?subject=MOS%20Maritime%20Group%20Enquiry">Enquire Now</a></li>
+    </ul>
+  </nav>
+</div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Offshore Pathway Clarity</div>
+      <h1>Practical offshore career positioning for commercial divers worldwide.</h1>
+      <p>
+        MOS Maritime Group helps serious commercial divers understand what it actually takes to position for offshore work, saturation progression, and long-term industry credibility. This is direct, practical guidance based on real offshore experience — not recycled sales talk.
+      </p>
+      <ul class="hero-points">
+        <li>Commercial diving pathway clarity</li>
+        <li>Offshore positioning strategy</li>
+        <li>Saturation progression planning</li>
+        <li>Direct, experience-based guidance</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:matt@mosmaritimegroup.co.nz?subject=MOS%20Maritime%20Group%20Enquiry">Email Now</a>
+        <a class="btn btn-secondary" href="#services">View Services</a>
+      </div>
+      <div class="hero-info-card">
+        <div class="hero-info-top">
+          <h2>Who this is for</h2>
+          <p>Built for people who want real direction, not guesswork.</p>
+        </div>
+        <div class="hero-info-body">
+          <ul>
+            <li>People considering commercial diver training and wanting a realistic view before committing serious money.</li>
+            <li>Qualified commercial divers trying to position properly for offshore work.</li>
+            <li>Divers targeting long-term offshore progression and saturation pathways.</li>
+            <li>People who want a direct assessment of where they stand and what needs fixing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-card">
+      <img src="offshore-platform.jpg" alt="Offshore platform at sea" />
+    </div>
+  </div>
+</section>
+<section class="problem">
+  <div class="container">
+    <div class="section-head">
+      <h2>Most people waste time, money, and years because nobody explains the gap properly.</h2>
+      <p>Training is not the same as employability. Certification is not the same as positioning. Offshore progression is not a straight line. MOS Maritime Group exists to close that gap clearly and honestly.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-box">
+        <h3>What people usually get wrong</h3>
+        <ul>
+          <li>They assume training alone will create offshore opportunities.</li>
+          <li>They underestimate how reputation, readiness, and timing affect progression.</li>
+          <li>They spend heavily before understanding the actual pathway.</li>
+          <li>They take generic advice from people with no real offshore depth.</li>
+        </ul>
+      </div>
+      <div class="problem-box">
+        <h3>What this gives you instead</h3>
+        <ul>
+          <li>A realistic view of the offshore and saturation pathway.</li>
+          <li>Clearer positioning based on your current level and goals.</li>
+          <li>Practical direction on what matters and what does not.</li>
+          <li>A more credible route forward built on industry reality.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <h2>Services focused on real industry progression.</h2>
+      <p>The offer should be sharp, direct, and immediately understandable to the right buyer.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-row">
+        <div class="service-tag">Pathway Review</div>
+        <p>A direct assessment of your current position, your target direction, and the gap between the two.</p>
+      </div>
+      <div class="service-row">
+        <div class="service-tag">Offshore Positioning</div>
+        <p>Guidance on how to present yourself more credibly for offshore consideration, based on reality rather than guesswork.</p>
+      </div>
+      <div class="service-row">
+        <div class="service-tag">Saturation Progression</div>
+        <p>Clear advice on what saturation progression actually looks like, what matters, and where people commonly go wrong.</p>
+      </div>
+      <div class="service-row">
+        <div class="service-tag">Commercial Clarity</div>
+        <p>Honest direction before you sink more time or money into a pathway that may not suit your goals or current position.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="why">
+  <div class="container authority-wrap">
+    <div class="authority-left">
+      <div class="authority-panel">
+        <h3>Why MOS Maritime Group</h3>
+        <p>The right visitor should understand immediately that the guidance is grounded in real offshore experience.</p>
+        <ul>
+          <li>Real offshore and commercial diving background</li>
+          <li>Direct, no-fluff communication</li>
+          <li>Practical understanding of offshore progression</li>
+          <li>Built for serious people, not casual browsers</li>
+        </ul>
+      </div>
+      <div class="image-card image-chamber">
+        <img src="sat-chamber-interior.jpg" alt="" />
+      </div>
+    </div>
+    <div class="authority-right">
+      <div class="image-card image-kirby">
+        <img src="kirby-helmet-close.jpg" alt="Kirby helmet close up" />
+      </div>
+      <div class="image-card image-underwater">
+        <img src="underwater-valve-work.jpg" alt="Underwater valve work" />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="book-strip" id="book">
+  <div class="container book-grid">
+    <div class="book-cover">
+      <img src="Book%20cover.1.png" alt="The Offshore Entry Blueprint book cover" />
+      <div>
+        <small>Book</small>
+        <h3>The Offshore Entry Blueprint</h3>
+        <p>What it actually takes to get hired in commercial diving and offshore oil &amp; gas.</p>
+      </div>
+      <p>A direct guide for people trying to understand the real gap between certification, employability, offshore positioning, and long-term progression.</p>
+    </div>
+    <div>
+      <div class="section-head">
+        <h2>Start with the book.</h2>
+        <p>The Offshore Entry Blueprint gives readers a direct, practical understanding of what it actually takes to move toward offshore work, saturation progression, and long-term industry credibility.</p>
+      </div>
+      <div class="book-points">
+        <div>Clearer understanding before bigger decisions</div>
+        <div>A direct view of the real offshore pathway</div>
+        <div>Practical insight built on real experience</div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.amazon.com/Offshore-Entry-Blueprint-Actually-Commercial-ebook/dp/B0GSJCZPX8" target="_blank" rel="noopener noreferrer">Buy the Book</a>
+        <a class="btn btn-secondary" href="mailto:matt@mosmaritimegroup.co.nz?subject=Book%20Enquiry">Book Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-section" id="contact">
+  <div class="container cta-box">
+    <div>
+      <div class="section-head" style="margin-bottom: 18px;">
+        <h2>Make contact directly.</h2>
+        <p>The right person should be able to contact you immediately without friction, confusion, or a bloated process.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:matt@mosmaritimegroup.co.nz?subject=MOS%20Maritime%20Group%20Enquiry">Email MOS Maritime Group</a>
+        <a class="btn btn-secondary" href="tel:+6421712442">Call +64 21 712 442</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Contact</h3>
+      <div class="contact-list">
+        <div>Matthew Turner</div>
+        <div>Director</div>
+        <a href="tel:+6421712442">+64 21 712 442</a>
+        <a href="mailto:matt@mosmaritimegroup.co.nz">matt@mosmaritimegroup.co.nz</a>
+        <div>Hawke’s Bay, New Zealand</div>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 MOS Maritime Group Limited. All rights reserved.</div>
+      <div>Worldwide offshore career positioning and progression support.</div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      const mainHeader = document.getElementById("mainHeader");
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", function () {
+        const currentY = window.scrollY;
+        if (currentY > lastScrollY && currentY > 60) {
+          mainHeader.classList.add("hidden");
+        } else {
+          mainHeader.classList.remove("hidden");
+        }
+        lastScrollY = currentY;
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
