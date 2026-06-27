@@ -386,7 +386,7 @@
 
     .authority-wrap {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 24px;
       align-items: start;
     }
@@ -426,20 +426,21 @@
     }
 
     .image-card {
-      background: #0b1623;
+      background: var(--white);
       overflow: hidden;
     }
 
     .image-card img {
       width: 100%;
       display: block;
+      background: var(--white);
     }
 
     .image-kirby img {
-      height: 520px;
+      height: auto;
+      max-height: none;
       object-fit: contain;
       object-position: center;
-      background: #0b1623;
     }
 
     .image-underwater img {
@@ -603,8 +604,7 @@
 
       .hero-image-card img,
       .image-underwater img,
-      .image-chamber img,
-      .image-kirby img {
+      .image-chamber img {
         height: auto;
         aspect-ratio: auto;
       }
