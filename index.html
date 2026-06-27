@@ -11,16 +11,18 @@
 
   <style>
     :root {
-      --navy: #0e2a47;
-      --navy-2: #173b5f;
-      --slate: #64748b;
-      --text: #142130;
-      --line: #d9e2ea;
-      --bg: #f6f9fc;
-      --white: #ffffff;
+      --navy: #050A0F;
+      --navy-2: #101B26;
+      --slate: #8D9AA5;
+      --text: #F1F3F5;
+      --line: #26333E;
+      --bg: #080E14;
+      --white: #111A22;
+      --gold: #D6AF42;
+      --gold-light: #F0CF70;
       --max: 1180px;
       --radius: 18px;
-      --shadow: 0 16px 40px rgba(14, 42, 71, 0.08);
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.48);
     }
 
     * {
@@ -35,7 +37,7 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: var(--white);
+      background: var(--bg);
       line-height: 1.55;
     }
 
@@ -56,10 +58,10 @@
     }
 
     .topbar {
-      background: var(--navy);
-      color: var(--white);
+      background: #03070B;
+      color: var(--gold-light);
       font-size: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(214, 175, 66, 0.18);
     }
 
     .topbar-inner {
@@ -83,7 +85,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(5, 10, 15, 0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
       transition: transform 0.28s ease, opacity 0.28s ease;
@@ -108,28 +110,28 @@
       align-items: center;
       gap: 14px;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--text);
     }
 
     .brand-mark {
       width: 50px;
       height: 50px;
       border-radius: 14px;
-      background: var(--navy);
-      color: var(--white);
+      background: var(--gold);
+      color: #050A0F;
       display: grid;
       place-items: center;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.08em;
       flex: 0 0 auto;
     }
 
     .brand-copy small {
       display: block;
-      color: var(--slate);
+      color: var(--gold-light);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -148,22 +150,28 @@
       margin: 0;
       padding: 0;
       align-items: center;
-      color: #29435f;
+      color: #D7E0E7;
       font-weight: 600;
       font-size: 15px;
+    }
+
+    nav ul a:hover {
+      color: var(--gold-light);
     }
 
     .nav-cta {
       padding: 12px 18px;
       border-radius: 12px;
-      background: var(--navy);
-      color: var(--white);
-      font-weight: 700;
+      background: var(--gold);
+      color: #050A0F;
+      font-weight: 800;
       white-space: nowrap;
     }
 
     .hero {
-      background: linear-gradient(180deg, #f8fbfe 0%, #eef4f9 100%);
+      background:
+        radial-gradient(circle at top right, rgba(214, 175, 66, 0.08), transparent 32%),
+        linear-gradient(180deg, #080E14 0%, #0C151E 100%);
       padding: 72px 0 56px;
       border-bottom: 1px solid var(--line);
     }
@@ -181,8 +189,9 @@
       gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(14, 42, 71, 0.08);
-      color: var(--navy);
+      background: rgba(214, 175, 66, 0.12);
+      color: var(--gold-light);
+      border: 1px solid rgba(214, 175, 66, 0.25);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -195,13 +204,13 @@
       font-size: clamp(36px, 5.2vw, 62px);
       line-height: 1.02;
       letter-spacing: -0.03em;
-      color: var(--navy);
+      color: var(--text);
     }
 
     .hero-copy p {
       margin: 0 0 22px;
       font-size: 18px;
-      color: #35485c;
+      color: #B8C4CE;
       max-width: 760px;
     }
 
@@ -217,10 +226,11 @@
     .hero-points li {
       background: var(--white);
       border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
       border-radius: 14px;
       padding: 14px 16px;
       font-weight: 600;
-      color: #24415d;
+      color: #E6EDF2;
       box-shadow: var(--shadow);
     }
 
@@ -238,18 +248,18 @@
       min-height: 50px;
       padding: 0 20px;
       border-radius: 12px;
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid transparent;
     }
 
     .btn-primary {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--gold);
+      color: #050A0F;
     }
 
     .btn-secondary {
       background: var(--white);
-      color: var(--navy);
+      color: var(--gold-light);
       border-color: var(--line);
     }
 
@@ -273,31 +283,33 @@
     }
 
     .hero-info-top {
-      background: var(--navy);
+      background: linear-gradient(135deg, #101B26 0%, #182A39 100%);
       color: var(--white);
       padding: 24px;
+      border-bottom: 1px solid rgba(214, 175, 66, 0.26);
     }
 
     .hero-info-top h2 {
       margin: 0 0 10px;
       font-size: 22px;
-      color: var(--white);
+      color: var(--gold-light);
     }
 
     .hero-info-top p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.86);
+      color: #D5DDE3;
       font-size: 15px;
     }
 
     .hero-info-body {
       padding: 22px 24px 24px;
+      background: var(--white);
     }
 
     .hero-info-body ul {
       margin: 0;
       padding-left: 18px;
-      color: #2f455b;
+      color: #D7E0E7;
     }
 
     .hero-info-body li + li {
@@ -317,18 +329,18 @@
       margin: 0 0 12px;
       font-size: clamp(30px, 4vw, 44px);
       line-height: 1.06;
-      color: var(--navy);
+      color: var(--text);
       letter-spacing: -0.02em;
     }
 
     .section-head p {
       margin: 0;
       font-size: 18px;
-      color: #41576d;
+      color: #AEBCC7;
     }
 
     .problem {
-      background: var(--bg);
+      background: #0B1219;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -348,14 +360,14 @@
 
     .problem-box h3 {
       margin: 0 0 12px;
-      color: var(--navy);
+      color: var(--gold-light);
       font-size: 22px;
     }
 
     .problem-box ul {
       margin: 0;
       padding-left: 18px;
-      color: #456075;
+      color: #C7D1D9;
     }
 
     .problem-box li + li {
@@ -379,8 +391,8 @@
     }
 
     .service-tag {
-      font-weight: 700;
-      color: var(--navy);
+      font-weight: 800;
+      color: var(--gold-light);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-size: 13px;
@@ -388,7 +400,7 @@
 
     .service-row p {
       margin: 0;
-      color: #486075;
+      color: #C2CED7;
     }
 
     .authority-wrap {
@@ -406,8 +418,11 @@
     }
 
     .authority-panel {
-      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+      background:
+        linear-gradient(135deg, rgba(214, 175, 66, 0.08), transparent 50%),
+        linear-gradient(180deg, #101B26 0%, #0A1118 100%);
       color: var(--white);
+      border: 1px solid rgba(214, 175, 66, 0.22);
       border-radius: 24px;
       padding: 30px;
       box-shadow: var(--shadow);
@@ -417,6 +432,10 @@
     .authority-panel p,
     .authority-panel li {
       color: var(--white);
+    }
+
+    .authority-panel h3 {
+      color: var(--gold-light);
     }
 
     .authority-panel p {
@@ -460,7 +479,7 @@
     }
 
     .book-strip {
-      background: var(--bg);
+      background: #0B1219;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -475,8 +494,11 @@
     .book-cover {
       min-height: 0;
       border-radius: 24px;
-      background: linear-gradient(180deg, #173b5f 0%, #0e2a47 100%);
+      background:
+        linear-gradient(135deg, rgba(214, 175, 66, 0.14), transparent 50%),
+        linear-gradient(180deg, #101B26 0%, #050A0F 100%);
       color: var(--white);
+      border: 1px solid rgba(214, 175, 66, 0.24);
       padding: 28px;
       box-shadow: var(--shadow);
       display: flex;
@@ -489,14 +511,14 @@
       max-width: 260px;
       margin: 0;
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(214, 175, 66, 0.42);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 
     .book-cover small {
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      opacity: 0.8;
+      color: var(--gold-light);
       font-weight: 700;
     }
 
@@ -509,7 +531,7 @@
 
     .book-cover p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.9);
+      color: #CDD7DE;
     }
 
     .book-points {
@@ -521,15 +543,18 @@
     .book-points div {
       background: var(--white);
       border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
       border-radius: 14px;
       padding: 14px 16px;
-      color: #29435f;
+      color: #D8E1E7;
       font-weight: 600;
       box-shadow: var(--shadow);
     }
 
     .cta-section {
-      background: linear-gradient(180deg, #0f2a46 0%, #173b5f 100%);
+      background:
+        radial-gradient(circle at top right, rgba(214, 175, 66, 0.12), transparent 36%),
+        linear-gradient(180deg, #101B26 0%, #050A0F 100%);
       color: var(--white);
     }
 
@@ -546,13 +571,17 @@
       color: var(--white);
     }
 
+    .cta-box h2 {
+      color: var(--gold-light);
+    }
+
     .cta-box p {
       opacity: 0.92;
     }
 
     .contact-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(214, 175, 66, 0.28);
       border-radius: 20px;
       padding: 26px;
     }
@@ -560,6 +589,7 @@
     .contact-card h3 {
       margin: 0 0 14px;
       font-size: 22px;
+      color: var(--gold-light);
     }
 
     .contact-list {
@@ -569,14 +599,15 @@
     }
 
     .contact-list a {
-      color: var(--white);
+      color: var(--gold-light);
     }
 
     footer {
-      background: #091a2c;
-      color: rgba(255, 255, 255, 0.82);
+      background: #03070B;
+      color: #8D9AA5;
       padding: 26px 0;
       font-size: 14px;
+      border-top: 1px solid var(--line);
     }
 
     .footer-inner {
@@ -894,7 +925,6 @@
           <div class="hero-actions">
             <a
               class="btn btn-primary"
-              style="background: var(--white); color: var(--navy);"
               href="mailto:matt@mosmaritimegroup.co.nz?subject=MOS%20Maritime%20Group%20Enquiry"
             >
               Email MOS Maritime Group
@@ -902,7 +932,7 @@
 
             <a
               class="btn btn-secondary"
-              style="background: transparent; color: var(--white); border-color: rgba(255,255,255,0.25);"
+              style="background: transparent; color: var(--gold-light); border-color: rgba(214,175,66,0.38);"
               href="tel:+6421712442"
             >
               Call +64 21 712 442
